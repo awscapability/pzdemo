@@ -1,23 +1,29 @@
-<html ng-app="myApp">
+<!DOCTYPE html>
+<html lang="en" >
+
 <head>
-    <link href="WEB-INF/css/main.css" rel="stylesheet" type="text/css"></link>
-    <script type="text/javascript" src="WEB-INF/js/jquery.1.10.2.min.js"></script>
-    <script type="text/javascript" src="WEB-INF/js/main.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="https://code.angularjs.org/1.2.13/angular.js"></script>
-    <script type="text/javascript" src="https://code.angularjs.org/1.2.13/angular-animate.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+  <meta charset="UTF-8">
+  <title>POS Demo for PZ International</title>
+  
+  
+  <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
+
+<body>
+
+  <html ng-app="myApp">
 <body data-ng-controller="POSController">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="jumbotron">
-          <h2><span class="text-warning">PZ POS DEMO</span> <span class="text-success">Make your own PIZZA !!</span></h2>
-          <span class="pull-right text-muted">Today is March 15, 2018</span>
-          <div class="text-muted">Địa chỉ công trình</div>
+          <h2><span class="text-warning">DEMO POS</span> <span class="text-success">- An Example of Online Point of Sale</span></h2>
+          <span class="pull-right text-muted">Business Date - May 15, 2018 (Tue)</span>
+          <div class="text-muted">Dear Employees, Help the customers to build their own PIZZA</div>
         </div>
       </div>
     </div>
@@ -26,19 +32,19 @@
       <div class="col-sm-6">
         <div class="well">
           <div class="box">
-            <div class="text-info">SELECT YOUR CRUST</div>
+            <div class="text-info">CRUST/TOPPINGS</div>
             <hr>
             
-            <button class="buttons btn btn-primary" ng-click="add(food.pizza)">Sofa</button>
-            <button class="buttons btn btn-primary" ng-click="add(food.donut)">Bàn sofa</button>
-            <button class="buttons btn btn-primary" ng-click="add(food.tortilla)">Ghế đôn</button>
-            <button class="buttons btn btn-primary" ng-click="add(food.burger)">Trang thờ</button>
-            <button class="buttons btn btn-success" ng-click="add(food.samosa)">Đèn soi tranh</button>
+            <button class="buttons btn btn-primary" ng-click="add(food.pizza)">Thin Crust</button>
+            <button class="buttons btn btn-primary" ng-click="add(food.pizzadeep)">Deep Dish</button>
+            <button class="buttons btn btn-primary" ng-click="add(food.nakedchicken)">Naked Chicken</button>
+            <button class="buttons btn btn-primary" ng-click="add(food.carribjerk)">Carribbean Jerk</button>
+            <button class="buttons btn btn-success" ng-click="add(food.cheesythin)">Cheesy Thin</button>
           </div>
           
           <br></br>
           <div class="box">
-            <div class="text-info">Beverages</div>
+            <div class="text-info">BEVERAGES/ DRINKS</div>
             <hr>
             
             <button class="buttons btn btn-primary" ng-click="add(food.coldcoffee)">Cold Coffee</button>
@@ -78,7 +84,7 @@
             </div>
             <div class="panel-footer" ng-show="order.length">
               <div class="text-muted">
-                Do not let go of customer without taking payment !
+                Please request the customers to submit the online survey !
               </div>
             </div>
             <div class="pull-right">
@@ -93,4 +99,20 @@
   </div>
 
 </body>
+</html>
+  <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+<script src='http://code.jquery.com/jquery-2.0.3.min.js'></script>
+<script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+<script src='http://code.angularjs.org/1.2.13/angular.js'></script>
+<script src='http://code.angularjs.org/1.2.13/angular-animate.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
 </html>
