@@ -5,5 +5,5 @@ files:
     destination: /var/lib/tomcat7/webapps
 hooks:
   AfterInstall:
-    - location: scripts/before.bat
+    - location: scripts/before.sh
       timeout: 300
