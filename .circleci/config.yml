@@ -31,11 +31,25 @@ jobs:
           - v1-dependencies-
 
       - run: mvn clean install dependency:go-offline
+      
+      # install python and awscli
+      - run: 
+          name: Install AWS CLI
+          command: |
+               sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
+               curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
+               sudo pip install -q awscli --upgrade
+               aws --version
+               cp /home/circleci/repo/target/PZDemoApp.war /home/circleci/repo/target/PZDemoApp.war_$CIRCLE_BUILD_NUM.zip
 
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
+          
+      - run: 
+          name: Upload to s3
+          command: aws s3 cp /home/circleci/repo/target/PZDemoApp.war_$CIRCLE_BUILD_NUM.zip s3://phawsdemo/
         
       # run tests!
       #- run: mvn integration-test
