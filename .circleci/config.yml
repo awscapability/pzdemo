@@ -47,6 +47,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
           
+      - store_artifacts:
+          path: /home/circleci/repo/target/PZDemoApp.war
+          destination: artifact-file
+          
       - run: 
           name: Upload to s3
           command: aws s3 cp /home/circleci/repo/target/PZDemoApp.war_$CIRCLE_BUILD_NUM.zip s3://phawsdemo/
