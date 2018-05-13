@@ -57,4 +57,25 @@ jobs:
         
       # run tests!
       #- run: mvn integration-test
+      - run: 
+          name: Deploying to Dev
+          command: |
+            date > date
+            echo "Get Application"
+            aws deploy get-application --application-name PZDemo --region us-east-2
+            echo "Get Deployment Config"
+            aws deploy get-deployment-config --deployment-config-name CodeDeployDefault.AllAtOnce --region us-east-2
+            echo "Get Deployment Group"
+            aws deploy get-deployment-group --application-name PZDemo --deployment-group-name DEV --region us-east-2
+            echo "Register Application"
+            aws deploy register-application-revision --application-name "PZDemo" --s3-location bucket=phawsdemo,bundleType=zip,key=PZDemoApp.war_$CIRCLE_BUILD_NUM.zip --region us-east-2
+            echo "Create Deployment"
+            aws deploy create-deployment --application-name PZDemo --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name DEV --s3-location bucket=phawsdemo,bundleType=zip,key=PZDemoApp.war_$CIRCLE_BUILD_NUM.zip --description "Deployed via CircleCI on $(cat date)" --region us-east-2 --file-exists-behavior OVERWRITE > deploy.json
+            jq -r '.deploymentId' deploy.json > newdeploy.json
+            sed -i '/^null/d' newdeploy.json
+                        
+      - run: 
+          name: Deployment Status
+          command: |
+            aws deploy wait deployment-successful --deployment-id $(cat newdeploy.json) --region us-east-1   
 
