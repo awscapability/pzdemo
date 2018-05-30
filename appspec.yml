@@ -1,7 +1,7 @@
 os: linux
 files:
   - source: ../bundle.tar
-    destination: /var/lib/tomcat7/webapps
+    destination: /var/lib/tomcat/webapps
 hooks:
   AfterInstall:
     - location: scripts/before.sh
